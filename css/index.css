@@ -1,0 +1,126 @@
+* {
+    font-family: "Bebas Neue", sans-serif !important;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.flash-warning {
+    font-weight: 700 !important;
+
+    font-optical-sizing: auto;
+    text-wrap: pretty;
+
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    color: rgb(0, 242, 255);
+    
+    text-shadow: 0px 15px 500px black;
+
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+
+    z-index: 1;
+    cursor: help;
+}
+
+.lambda {
+    z-index: 2;
+    font-size: var(--lambda-size);
+    color: rgb(0, 242, 255);
+
+    animation: lambda-scale 0.15s infinite;
+    -webkit-animation: 0.15s infinite lambda-scale;
+    -moz-animation: 0.15s infinite lambda-scale;
+}
+
+.main-box {
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.lambda_over {
+    animation: flash 0.1s infinite, flash_hue 2s alternate infinite;
+    -webkit-animation: flash 0.1s infinite, flash_hue 2s alternate infinite;
+    -moz-animation: flash 0.1s infinite, flash_hue 2s alternate infinite;
+
+    filter: blur(2px) !important;
+}
+
+.lambda_scale {
+    animation: lambda-scale 0.15s infinite;
+    -webkit-animation: 0.15s infinite lambda-scale;
+    -moz-animation: 0.15s infinite lambda-scale;
+}
+
+.flash-warning-text {
+    font-size: 3rem !important;    
+}
+
+.main-box-text {
+    color: rgb(0, 242, 255);
+    filter: blur(1.3px);
+    -webkit-filter: blur(1.3px);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.main-box-text-title {
+    font-size: 6vh !important;
+    width: fit-content;
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 1%;
+}
+
+.zindex {
+    z-index: 3 !important;
+}
+
+.static-fixed {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+}
+
+.canvas_div {
+    filter: invert();
+}
+
+@media screen and (max-width: 480px) {
+    .main-box-text-title {
+        border: none !important;
+    }
+
+    .projects-container {
+        text-align: center;
+        display: unset !important;
+        justify-content: unset !important;
+    }
+
+    .notable_projects_text {
+        padding-bottom: 5%;
+        padding-top: 5%;
+    }
+
+    .project_link {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+}

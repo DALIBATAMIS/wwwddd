@@ -1,0 +1,55 @@
+.text-center {
+    text-align: center;
+}
+
+.right-on-the-center {
+    position: fixed;
+    inset: 0px;
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
+}
+
+.user-select-none {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.background-white {
+    background-color: white !important;
+}
+
+.exclusion-mode {
+    mix-blend-mode: exclusion;
+}
+
+.OH_ms-flash {
+    animation: flash 0.1s infinite;
+    -webkit-animation: flash 0.1s infinite;
+    -moz-animation: flash 0.1s infinite;
+}
+
+.two_s-flash-hue {
+    animation: flash_hue 2s alternate infinite;
+    -webkit-animation: flash_hue 2s alternate infinite;
+    -moz-animation: flash_hue 2s alternate infinite;
+}
+
+.one_s-flash-hue {
+    animation: flash_hue 1s alternate infinite;
+    -webkit-animation: flash_hue 1s alternate infinite;
+    -moz-animation: flash_hue 1s alternate infinite;
+}
+
+
+.OH_ms-flash-hue {
+    animation: flash_hue 0.125s infinite;
+    -webkit-animation: flash_hue 0.125s infinite;
+    -moz-animation: flash_hue 0.125s infinite;
+}
+
+.hidden {
+    visibility: hidden !important;
+}
