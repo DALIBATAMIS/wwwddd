@@ -10,6 +10,7 @@ body {
     filter: blur(0.1ch);
     text-align: center;
     word-wrap: break-word;
+    font-size: 2vh !important;
 }
 
 html, body {
@@ -18,4 +19,5 @@ html, body {
 
 marquee {
     filter: blur(0.08ch);
+    font-size: 2vh;
 }
