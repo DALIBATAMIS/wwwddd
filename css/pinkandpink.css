@@ -1,0 +1,21 @@
+body {
+    /* background-color: #FD4F92; */
+    /* color: white; */
+    color: #FD4F92;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.thetext {
+    filter: blur(0.1ch);
+    text-align: center;
+    word-wrap: break-word;
+}
+
+html, body {
+    overflow: hidden;
+}
+
+marquee {
+    filter: blur(0.08ch);
+}
