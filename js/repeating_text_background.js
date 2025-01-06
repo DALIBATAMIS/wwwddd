@@ -32,13 +32,13 @@ const draw_text = (ctx, possible_texts) => {
     const fontsize = 35;
     ctx.font = fontsize + "px Bebas Neue ";
 
-    ctx.fillStyle = `rgba(0, 0, 0, 0.25)`;
+    ctx.fillStyle = `rgba(0, 0, 0, 0.125)`;
     ctx.textBaseline = "top";
 
     return function animate_text(canvas) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.font = fontsize + "px Bebas Neue";
-        ctx.fillStyle = `rgba(0, 0, 0, 0.25)`;
+        ctx.fillStyle = `rgba(0, 0, 0, 0.125)`;
         ctx.textBaseline = "top";
 
         const text_width = ctx.measureText(text).width;
