@@ -45,3 +45,15 @@
     0% { font-size: var(--lambda-size) }
     100% { font-size: calc(var(--lambda-size) * 2) }
 }
+
+@keyframes rotate-around {
+    to {transform: rotate(1turn);}
+}
+
+@-webkit-keyframes rotate-around {
+    to {transform: rotate(1turn);}
+}
+
+@-moz-keyframes rotate-around {
+    to {transform: rotate(1turn);}
+}

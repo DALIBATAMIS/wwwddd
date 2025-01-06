@@ -41,6 +41,10 @@ canvas {
     -moz-animation: 0.15s infinite lambda-scale;
 }
 
+.red-lambda {
+    color: rgb(235, 10, 10) !important;
+}
+
 .main-box {
     background-color: red;
     width: 100%;
@@ -49,11 +53,14 @@ canvas {
 }
 
 .lambda_over {
+    font-size: calc(var(--lambda-size) + 3vh);
+
     animation: flash 0.1s infinite, flash_hue 2s alternate infinite;
     -webkit-animation: flash 0.1s infinite, flash_hue 2s alternate infinite;
     -moz-animation: flash 0.1s infinite, flash_hue 2s alternate infinite;
 
     filter: blur(2px) !important;
+    -webkit-filter: blur(2px) !important;
 }
 
 .lambda_scale {
@@ -103,6 +110,25 @@ canvas {
     filter: invert();
 }
 
+.rotating-text {
+    animation: rotate-around 3s infinite linear;
+    -webkit-animation: rotate-around 3s infinite linear;
+    -moz-animation: rotate-around 3s infinite linear;
+}
+
+/* .name {
+    -webkit-text-stroke: 0.5px black;
+} */
+
+.socials {
+    position: absolute;
+    bottom: 3vh;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;   
+}
+
 @media screen and (max-width: 480px) {
     .main-box-text-title {
         border: none !important;
@@ -112,15 +138,5 @@ canvas {
         text-align: center;
         display: unset !important;
         justify-content: unset !important;
-    }
-
-    .notable_projects_text {
-        padding-bottom: 5%;
-        padding-top: 5%;
-    }
-
-    .project_link {
-        padding: 0 !important;
-        margin: 0 !important;
     }
 }
