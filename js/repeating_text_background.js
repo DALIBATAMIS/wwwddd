@@ -27,27 +27,31 @@ const draw_text = (ctx, possible_texts) => {
     const index = Math.floor(Math.random() * possible_texts.length);
     const text = possible_texts[index] + "  ";
 
-    const speed = clamp_width_to_speed(window.innerWidth) - 0.5;
+    const speed = clamp_width_to_speed(window.innerWidth) - 0.1;
 
-    const fontsize = 35;
-    ctx.font = fontsize + "px Bebas Neue ";
+    const fontsize = "5.5vh";
+    const fontheight = 4.5 * window.innerHeight / 100;
+    ctx.font = fontsize + " Bebas Neue ";
 
-    ctx.fillStyle = `rgba(0, 0, 0, 0.125)`;
+    ctx.fillStyle = `rgba(0, 0, 0, 0.135)`;
     ctx.textBaseline = "top";
 
     return function animate_text(canvas) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.font = fontsize + "px Bebas Neue";
-        ctx.fillStyle = `rgba(0, 0, 0, 0.125)`;
+        ctx.font = fontsize + " Bebas Neue";
+        ctx.fillStyle = `rgba(0, 0, 0, 0.135)`;
         ctx.textBaseline = "top";
 
-        const text_width = ctx.measureText(text).width;
-        const text_height = fontsize;
-
+        const text_width  = ctx.measureText(text).width;
+        const text_height = fontheight;
+        
+        let i = 0;
         for (let y = 0; y < canvas.height; y += text_height) {
-            const nth = y / text_height % 4;
-            const direction = nth < 2 ? 1 : -1;
+            const direction = (i % 4) < 2 ? 1 : -1;
             const offset = (time * speed * direction) % text_width;
+            
+            if (i == 4) {i = 0;}
+            i += 1;
 
             for (let x = -text_width; x < canvas.width + text_width; x += text_width) {
                 ctx.fillText(text, x + offset, y);
