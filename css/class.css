@@ -85,11 +85,3 @@
 .back::after {
     content: "BACK TO INDEX";
 }
-
-a:visited {
-    color: inherit;
-}
-
-a {
-    color: inherit;
-}

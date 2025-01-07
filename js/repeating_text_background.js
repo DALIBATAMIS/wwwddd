@@ -38,11 +38,16 @@ const draw_text = (ctx, possible_texts) => {
 
     const fontsize = "5.5vh";
     const fontheight = 4.5 * window.innerHeight / 100;
+    
     ctx.font = fontsize + " Bebas Neue ";
-
+    ctx.fillStyle = `rgba(0, 0, 0, 0.135)`;
+    ctx.textBaseline = "top";
     ctx.fillStyle = `rgba(0, 0, 0, 0.135)`;
     ctx.textBaseline = "top";
 
+    const text_width = ctx.measureText(text).width;
+    const text_height = fontheight;
+    
     return function animate_text(canvas) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
@@ -51,23 +56,14 @@ const draw_text = (ctx, possible_texts) => {
             return;
         }
 
-        ctx.font = fontsize + " Bebas Neue";
-        ctx.fillStyle = `rgba(0, 0, 0, 0.135)`;
-        ctx.textBaseline = "top";
+        let offset = (time * speed) % text_width;
 
-        const text_width  = ctx.measureText(text).width;
-        const text_height = fontheight;
-        
-        let i = 0;
         for (let y = 0; y < canvas.height; y += text_height) {
-            const direction = (i % 4) < 2 ? 1 : -1;
-            const offset = (time * speed * direction) % text_width;
-            
-            if (i == 4) {i = 0;}
-            i += 1;
+            const direction = (Math.round((y / text_height)) % 4) < 2 ? 1 : -1;
+            const ad_offset = offset * direction;
 
             for (let x = -text_width; x < canvas.width + text_width; x += text_width) {
-                ctx.fillText(text, x + offset, y);
+                ctx.fillText(text, x + ad_offset, y);
             }
         }
 
