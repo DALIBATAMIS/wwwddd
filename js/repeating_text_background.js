@@ -45,25 +45,33 @@ const draw_text = (ctx, possible_texts) => {
     ctx.fillStyle = `rgba(0, 0, 0, 0.135)`;
     ctx.textBaseline = "top";
 
-    const text_width = ctx.measureText(text).width;
-    const text_height = fontheight;
     
-    return function animate_text(canvas) {
+    return async function animate_text(canvas) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         if (document.hidden) {
             animation_frame_id = requestAnimationFrame(() => animate_text(canvas));
             return;
         }
-
+        
+        const text_width = ctx.measureText(text).width;
+        const text_height = fontheight;
+        
         let offset = (time * speed) % text_width;
 
         for (let y = 0; y < canvas.height; y += text_height) {
             const direction = (Math.round((y / text_height)) % 4) < 2 ? 1 : -1;
             const ad_offset = offset * direction;
 
-            for (let x = -text_width; x < canvas.width + text_width; x += text_width) {
-                ctx.fillText(text, x + ad_offset, y);
+            let i = 0;
+
+            for (let x = -text_width; x < canvas.width + text_width * 15; x += text_width) {
+                if (i % 2 == 0) {
+                    ctx.fillText(text, x + ad_offset, y);
+                    i = 1;
+                }
+
+                i += 1;
             }
         }
 
