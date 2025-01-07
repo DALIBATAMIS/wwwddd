@@ -57,3 +57,15 @@
 @-moz-keyframes rotate-around {
     to {transform: rotate(1turn);}
 }
+
+@keyframes button-blink {
+    50% {color: white;background-color: rgb(255, 0, 140);text-shadow: none;}
+}
+
+@-webkit-keyframes button-blink {
+    50% {color: white;background-color: rgb(255, 0, 140);text-shadow: none;}
+}
+
+@-moz-keyframes button-blink {
+    50% {color: white;background-color: rgb(255, 0, 140);text-shadow: none;}
+}

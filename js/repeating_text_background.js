@@ -7,10 +7,17 @@ const fast_arctan = ((x) => {
 
     const xx = x * x;
     return ((a[2] * xx + a[1]) * xx + a[0]) * x;
-})
+});
+
+let speed_add = 1.0;
 
 const clamp_width_to_speed = ((width) => {
-    return 4 * (fast_arctan(width / 1920) / (0.5 * Math.PI))
+    if (Math.floor(Math.random() * 3) == 0 && speed_add === 1.0) {
+        speed_add += 2;
+    }
+
+    console.log(speed_add);
+    return 4 * (fast_arctan(width / 1920) / (0.5 * Math.PI)) * speed_add;
 });
 
 const texts_to_choose = [
@@ -21,7 +28,7 @@ const texts_to_choose = [
 ];
 
 let time = 0;
-let animationFrameId;
+let animation_frame_id;
 
 const draw_text = (ctx, possible_texts) => {
     const index = Math.floor(Math.random() * possible_texts.length);
@@ -38,6 +45,12 @@ const draw_text = (ctx, possible_texts) => {
 
     return function animate_text(canvas) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        if (document.hidden) {
+            animation_frame_id = requestAnimationFrame(() => animate_text(canvas));
+            return;
+        }
+
         ctx.font = fontsize + " Bebas Neue";
         ctx.fillStyle = `rgba(0, 0, 0, 0.135)`;
         ctx.textBaseline = "top";
@@ -59,7 +72,7 @@ const draw_text = (ctx, possible_texts) => {
         }
 
         time++;
-        animationFrameId = requestAnimationFrame(() => animate_text(canvas));
+        animation_frame_id = requestAnimationFrame(() => animate_text(canvas));
     };
 };
 
@@ -83,8 +96,8 @@ const set_repeating_background = (() => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        if (animationFrameId) {
-            // cancelAnimationFrame(animationFrameId);
+        if (animation_frame_id) {
+            // cancelAnimationFrame(animation_frame_id);
         }
 
         const animation = draw_text(ctx, texts_to_choose);

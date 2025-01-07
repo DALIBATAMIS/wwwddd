@@ -52,7 +52,6 @@
     -moz-animation: flash_hue 1s alternate infinite;
 }
 
-
 .OH_ms-flash-hue {
     animation: flash_hue 0.125s infinite;
     -webkit-animation: flash_hue 0.125s infinite;
@@ -69,4 +68,28 @@
 
 .sbigger {
     scale: 1.05 !important;
+}
+
+.zindex {
+    z-index: 3 !important;
+}
+
+.xxl-font {
+    font-size: xx-large !important;
+}
+
+.back span {
+    display: none;
+}
+
+.back::after {
+    content: "BACK TO INDEX";
+}
+
+a:visited {
+    color: inherit;
+}
+
+a {
+    color: inherit;
 }
