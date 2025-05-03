@@ -86,7 +86,7 @@ const set_repeating_background = (() => {
     let canvas;
     if (!canvas_exists) {
         canvas = document.createElement('canvas');
-        $(".canvas_div")[0].appendChild(canvas);
+        document.getElementsByClassName("canvas_div")[0].appendChild(canvas);
     } else {
         canvas = canvases[0];
     }
@@ -106,7 +106,7 @@ const set_repeating_background = (() => {
         animation(canvas);
     };
 
-    $(window).on('resize', resize_canvas);
+    document.onresize = resize_canvas;
 
     resize_canvas();
 

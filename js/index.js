@@ -1,29 +1,34 @@
 "use strict";
 
+const gebcn = ((str) => {return document.getElementsByClassName(str);});
+
 const flash_warning_bound = (async () => {
-    $(".flash-warning").remove();
+    gebcn("flash-warning")[0].remove();
     await load_webpage();
 });
 
 const random_color_flash = (async (limit, sleep_time) => {
+    const main_box = gebcn("main-box")[0];
+    const lambda = gebcn("lambda")[0];
+    
     for (let i = 0; i < limit; i++) {
-        if (sleep_time == 0) {
+        if (sleep_time == 0)
             sleep_time = Math.random() * 150 + 50;
-        }
         
         const color = randomcolor().toString(16);
         
-        $(".lambda").addClass("red-lambda");
-        $(".main-box").css({"background-color": "#" + color});
+        lambda.classList.add("red-lambda");
+        main_box.style.backgroundColor = "#" + color;
         await sleep(sleep_time);
-        $(".lambda").removeClass("red-lambda");
+        lambda.classList.remove("red-lambda");
     }
     
-    $(".main-box").css({"background-color": "red"});
+    main_box.style.backgroundColor = "red";
 });
 
 const random_flash_forever = (async () => {
     console.log('RANDOM_FLASH_FOREVER');
+
     await random_color_flash(Math.random() * 5 + 3, Math.random() * 125 + 60);
     await sleep(Math.random() * 2000 + 1000);
     random_flash_forever();
@@ -32,10 +37,11 @@ const random_flash_forever = (async () => {
 const random_scale_forever = (async () => {
     console.log('RANDOM_SCALE_FOREVER');
 
-    const random_duration = Math.random() * 2;
-    $(".lambda-over").addClass("lambda_scale");
+    const lambda_over = gebcn("lambda")[0];
+
+    lambda_over.classList.add("lambda_scale");
     await sleep(Math.random() * 1000 + 1000);
-    $(".lambda-over").removeClass("lambda_scale");
+    lambda_over.classList.remove("lambda_scale");
 
     await sleep(Math.random() * 3000 + 2000);
     
@@ -47,41 +53,41 @@ const load_webpage = (async () => {
     await set_repeating_background();
     await random_color_flash(7, 0);
 
-    $(".main-box-text").removeClass("hidden");
+    gebcn("main-box-text")[0].classList.remove("hidden");
 
     random_flash_forever();
     random_scale_forever();
 });
 
 const socials_bound = ((b) => {
-    $(".name").addClass("hidden");
-    $(".projects").addClass("hidden");
-    $(".socials").removeClass("hidden");
-    
-    $(".socials-button").addClass("back");
-    $(".projects-button").removeClass("back");
+    gebcn("name")[0].classList.add("hidden");
+    gebcn("projects")[0].classList.add("hidden");
+    gebcn("socials")[0].classList.remove("hidden");
+
+    gebcn("socials-button")[0].classList.add("back");
+    gebcn("projects-button")[0].classList.remove("hidden");
 
     console.log("SOCIALS HIT");
 });
 
 const projects_bound = ((b) => {
-    $(".name").addClass("hidden");
-    $(".socials").addClass("hidden");
-    $(".projects").removeClass("hidden");
+    gebcn("name")[0].classList.add("hidden");
+    gebcn("projects")[0].classList.remove("hidden");
+    gebcn("socials")[0].classList.add("hidden");
 
-    $(".socials-button").removeClass("back");
-    $(".projects-button").addClass("back");
+    gebcn("socials-button")[0].classList.remove("back");
+    gebcn("projects-button")[0].classList.add("hidden");
 
     console.log("PROJECTS HIT");
 });
 
 const back_to_index_bound = ((b) => {
-    $(".socials").addClass("hidden");
-    $(".projects").addClass("hidden");
-    $(".name").removeClass("hidden");
+    gebcn("socials")[0].classList.add("hidden");
+    gebcn("projects")[0].classList.add("hidden");
+    gebcn("name")[0].classList.remove("hidden");
 
-    $(".socials-button").removeClass("back");
-    $(".projects-button").removeClass("back");
+    gebcn("socials-button")[0].classList.remove("back");
+    gebcn("projects-button")[0].classList.remove("back");
 });
 
 const button_click = ((b) => {
@@ -107,27 +113,7 @@ const button_click = ((b) => {
     throw new Error("UNREACHABLE");
 });
 
-window.mobileAndTabletCheck = function() {
-    let check = false;
-    (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
-    return check;
-};
-
-$(document).ready(() => {
-    // flash_warning_bound();
-    $(".flash-warning").click(flash_warning_bound);
-    $(".button").click(button_click);
-
-    let shadow = document.querySelector("#shadow");
-
-    const mouse_shadow = ((e) => {
-        shadow.style.top = e.pageY + 'px';
-        shadow.style.left = e.pageX + 'px';
-    });
-
-    // if (!window.mobileAndTabletCheck()) { 
-    //     this.addEventListener("mousemove", mouse_shadow);
-    // } else {
-    //     $('#shadow').remove();
-    // }
+window.onload = (() => {
+    gebcn("flash-warning")[0].onclick = flash_warning_bound;
+    gebcn("button")[0].onclick;
 });
