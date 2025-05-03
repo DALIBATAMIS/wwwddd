@@ -115,5 +115,11 @@ const button_click = ((b) => {
 
 window.onload = (() => {
     gebcn("flash-warning")[0].onclick = flash_warning_bound;
-    gebcn("button")[0].onclick;
+    
+    for ([_, button] of Object.entries(gebcn("buttons"))) {
+        if (button === undefined) continue;
+
+        button.onclick = button_click;
+    }
+    gebcn("button")[0].onclick = button_click;
 });
