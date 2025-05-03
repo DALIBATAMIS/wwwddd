@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "WWWDDD - DATAWATER@SAFEWORD",
   "scripts": {
-    "build": "node node_modules/parcel/lib/bin.js build --log-level verbose --no-source-maps --detailed-report 1 index.html"
+    "build": "node node_modules/parcel/lib/bin.js build --log-level verbose --no-source-maps --detailed-report 1 index.html",
+    "build_gh": "node node_modules/parcel/lib/bin.js build --log-level verbose --no-source-maps --detailed-report 1 --public-url './wwwddd' index.html"
   },
   "repository": {
     "type": "git",
