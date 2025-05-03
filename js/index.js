@@ -65,7 +65,7 @@ const socials_bound = ((b) => {
     gebcn("socials")[0].classList.remove("hidden");
 
     gebcn("socials-button")[0].classList.add("back");
-    gebcn("projects-button")[0].classList.remove("hidden");
+    gebcn("projects-button")[0].classList.remove("back");
 
     console.log("SOCIALS HIT");
 });
@@ -76,7 +76,7 @@ const projects_bound = ((b) => {
     gebcn("socials")[0].classList.add("hidden");
 
     gebcn("socials-button")[0].classList.remove("back");
-    gebcn("projects-button")[0].classList.add("hidden");
+    gebcn("projects-button")[0].classList.add("back");
 
     console.log("PROJECTS HIT");
 });
@@ -88,26 +88,30 @@ const back_to_index_bound = ((b) => {
 
     gebcn("socials-button")[0].classList.remove("back");
     gebcn("projects-button")[0].classList.remove("back");
+    gebcn("socials-button")[0].classList.remove("hidden");
+    gebcn("projects-button")[0].classList.remove("hidden");
 });
 
 const button_click = ((b) => {
-    const classes = b.currentTarget.className.split(" ");
+    const classes = b.currentTarget.classList;
 
     console.log(classes);
 
-    const is_back = classes.some((x) => x === "back")
+    const is_back = classes.contains("back")
     if (is_back)
         return back_to_index_bound(b);
 
-    const is_socials = classes.some((x) => x === "socials-button");
+    const is_socials = classes.contains("socials-button");
 
     if (is_socials)
         return socials_bound(b);
 
-    const is_projects = classes.some((x) => x === "projects-button");
+    const is_projects = classes.contains("projects-button");
 
     if (is_projects)
         return projects_bound(b);
+
+    console.log(classes)
 
     alert('unreachable');
     throw new Error("UNREACHABLE");
@@ -116,10 +120,11 @@ const button_click = ((b) => {
 window.onload = (() => {
     gebcn("flash-warning")[0].onclick = flash_warning_bound;
     
-    for ([_, button] of Object.entries(gebcn("buttons"))) {
+    let _k, button;
+    for ([_k, button] of Object.entries(gebcn("button"))) {
         if (button === undefined) continue;
 
+        console.log(button);
         button.onclick = button_click;
     }
-    gebcn("button")[0].onclick = button_click;
 });
