@@ -13,7 +13,7 @@ let speed_add = 1.0;
 
 const clamp_width_to_speed = ((width) => {
     if (Math.floor(Math.random() * 3) == 0 && speed_add === 1.0) {
-        speed_add += 2;
+        speed_add += 0.75;
     }
 
     console.log(speed_add);
@@ -40,12 +40,9 @@ const draw_text = (ctx, possible_texts) => {
     const fontheight = 4.5 * window.innerHeight / 100;
     
     ctx.font = fontsize + " Bebas Neue ";
-    ctx.fillStyle = `rgba(0, 0, 0, 0.135)`;
-    ctx.textBaseline = "top";
-    ctx.fillStyle = `rgba(0, 0, 0, 0.135)`;
+    ctx.fillStyle = `rgba(255, 0, 255, 0.75)`;
     ctx.textBaseline = "top";
 
-    
     return async function animate_text(canvas) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
@@ -56,7 +53,7 @@ const draw_text = (ctx, possible_texts) => {
         
         const text_width = ctx.measureText(text).width;
         const text_height = fontheight;
-        
+
         let offset = (time * speed) % text_width;
 
         for (let y = 0; y < canvas.height; y += text_height) {
@@ -94,6 +91,7 @@ const set_repeating_background = (() => {
         canvas = canvases[0];
     }
 
+    // $(canvas).addClass("exclusion-mode");
     const ctx = canvas.getContext('2d');
 
     const resize_canvas = () => {
@@ -101,7 +99,7 @@ const set_repeating_background = (() => {
         canvas.height = window.innerHeight;
 
         if (animation_frame_id) {
-            // cancelAnimationFrame(animation_frame_id);
+            cancelAnimationFrame(animation_frame_id);
         }
 
         const animation = draw_text(ctx, texts_to_choose);
@@ -114,4 +112,3 @@ const set_repeating_background = (() => {
 
     return () => {};
 })();
-

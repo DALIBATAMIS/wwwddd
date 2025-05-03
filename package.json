@@ -1,0 +1,21 @@
+{
+  "name": "wwwddd",
+  "version": "1.0.0",
+  "description": "WWWDDD - DATAWATER@SAFEWORD",
+  "scripts": {
+    "build": "node node_modules/parcel/lib/bin.js build --log-level verbose --no-source-maps --detailed-report 1 index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/datawater/wwwddd.git"
+  },
+  "author": "datawater",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/datawater/wwwddd/issues"
+  },
+  "homepage": "https://github.com/datawater/wwwddd#readme",
+  "devDependencies": {
+    "parcel": "^2.14.4"
+  }
+}

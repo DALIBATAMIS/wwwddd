@@ -1,6 +1,5 @@
 * {
-    font-family: "Bebas Neue", sans-serif !important;
-    /* cursor: none !important; */
+    font-family: "Bebas Neue", monospace !important;
 }
 
 body, html { 
@@ -118,9 +117,9 @@ canvas {
 }
 
 .canvas_div {
-    filter: invert();
-    -webkit-filter: invert();
-    -ms-filter: invert();
+/*    filter: invert();*/
+/*    -webkit-filter: invert();*/
+/*    -ms-filter: invert();*/
 }
 
 .rotating-text {
@@ -140,6 +139,8 @@ canvas {
     right: 0;
     margin-left: auto;
     margin-right: auto;
+
+    background-color: black;
 }
 
 .button {
@@ -160,6 +161,10 @@ canvas {
     animation: button-blink 0.6s step-start 0s infinite;
     -webkit-animation: button-blink 0.6s step-start 0s infinite;
     -moz-animation: button-blink 0.6s step-start 0s infinite;
+}
+
+.projects-button {
+    background-color: black;
 }
 
 .projects-grid {
@@ -193,6 +198,11 @@ canvas {
     font-size: 8vh;
     display: grid;
     gap: 2vh;
+}
+
+.socials-grid-element {
+    background-color: black;
+    width: 200vw;
 }
 
 a:visited {
