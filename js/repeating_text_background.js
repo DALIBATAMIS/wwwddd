@@ -16,7 +16,6 @@ const clamp_width_to_speed = ((width) => {
         speed_add += 0.75;
     }
 
-    console.log(speed_add);
     return 4 * (fast_arctan(width / 1920) / (0.5 * Math.PI)) * speed_add;
 });
 
@@ -91,7 +90,6 @@ const set_repeating_background = (() => {
         canvas = canvases[0];
     }
 
-    // $(canvas).addClass("exclusion-mode");
     const ctx = canvas.getContext('2d');
 
     const resize_canvas = () => {

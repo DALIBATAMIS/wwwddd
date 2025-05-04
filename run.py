@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 from http.server import HTTPServer, SimpleHTTPRequestHandler
-import socket
 
 server_addr = ('', 8080)
 
@@ -9,6 +8,7 @@ class RedirectHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path == "/":
             self.path = "/index.html"
+        
         return super().do_GET()
 
 def main():

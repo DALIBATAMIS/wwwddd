@@ -59,6 +59,7 @@ const load_webpage = (async () => {
     random_scale_forever();
 });
 
+// I can refactor this to use DRY but whatever
 const socials_bound = ((b) => {
     gebcn("name")[0].classList.add("hidden");
     gebcn("projects")[0].classList.add("hidden");
@@ -95,8 +96,6 @@ const back_to_index_bound = ((b) => {
 const button_click = ((b) => {
     const classes = b.currentTarget.classList;
 
-    console.log(classes);
-
     const is_back = classes.contains("back")
     if (is_back)
         return back_to_index_bound(b);
@@ -111,8 +110,7 @@ const button_click = ((b) => {
     if (is_projects)
         return projects_bound(b);
 
-    console.log(classes)
-
+    
     alert('unreachable');
     throw new Error("UNREACHABLE");
 });
@@ -124,7 +122,6 @@ window.onload = (() => {
     for ([_k, button] of Object.entries(gebcn("button"))) {
         if (button === undefined) continue;
 
-        console.log(button);
         button.onclick = button_click;
     }
 });

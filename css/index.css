@@ -116,21 +116,18 @@ canvas {
     left: 0;
 }
 
-.canvas_div {
-/*    filter: invert();*/
-/*    -webkit-filter: invert();*/
-/*    -ms-filter: invert();*/
-}
-
 .rotating-text {
     animation: rotate-around 3s infinite linear;
     -webkit-animation: rotate-around 3s infinite linear;
     -moz-animation: rotate-around 3s infinite linear;
 }
 
-/* .name {
+.name {
     -webkit-text-stroke: 0.5px black;
-} */
+    background-color: red;
+    height: fit-content;
+    /* margin-top: 20%; */
+}
 
 .socials-button {
     position: absolute;
