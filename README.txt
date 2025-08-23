@@ -1,1 +1,1 @@
-Migrated to https://github.com/DALIBATAMIS/wwwddd
+Migrated to https://codeberg.org/datawater/wwwddd
